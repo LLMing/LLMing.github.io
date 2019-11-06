@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+      <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+
+  <title>K-近邻算法（K-NearestNeighbor， KNN）</title>
+
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="origin" />
+  <meta name="generator" content="Pelican" />
+  <link href="https://llming.github.io/" rel="canonical" />
+
+  <!-- Feed -->
+
+  <link href="https://llming.github.io/theme/css/style.css" type="text/css" rel="stylesheet" />
+
+  <!-- Code highlight color scheme -->
+      <link href="https://llming.github.io/theme/css/code_blocks/monokai.css" rel="stylesheet">
+
+
+  <!-- Custom fonts -->
+  <link href='https://fonts.googleapis.com/css?family=Montserrat:400,300' rel='stylesheet' type='text/css' />
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css" />
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+
+    <link href="https://llming.github.io/k-jin-lin-suan-fa-k-nearestneighbor-knn.html" rel="canonical" />
+
+        <meta name="description" content="K近邻算法概述 K-近邻算法采用测量不同特征值之间的距离方法进行分类 优点： 精度高、对异常者不敏感、无数据输入假定。 缺点： 计算复杂度高、空间复杂度高。 适用数据范围： 数值型和标称型。 工作原理...">
+
+        <meta name="author" content="LLMing">
+
+        <meta name="tags" content="Python">
+        <meta name="tags" content="MachineLearning">
+
+
+
+
+<!-- Open Graph -->
+<meta property="og:site_name" content="LLMing Blog"/>
+<meta property="og:title" content="K-近邻算法（K-NearestNeighbor， KNN）"/>
+<meta property="og:description" content="K近邻算法概述 K-近邻算法采用测量不同特征值之间的距离方法进行分类 优点： 精度高、对异常者不敏感、无数据输入假定。 缺点： 计算复杂度高、空间复杂度高。 适用数据范围： 数值型和标称型。 工作原理..."/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://llming.github.io/k-jin-lin-suan-fa-k-nearestneighbor-knn.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2019-11-06 16:44:34.283151+01:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://llming.github.io/author/llming.html">
+<meta property="article:section" content="machineLearning"/>
+<meta property="article:tag" content="Python"/>
+<meta property="article:tag" content="MachineLearning"/>
+<meta property="og:image" content="https://llming.github.io/theme/images/post-bg.jpg">
+
+<!-- Twitter Card -->
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "name": "K-近邻算法（K-NearestNeighbor， KNN）",
+  "headline": "K-近邻算法（K-NearestNeighbor， KNN）",
+  "datePublished": "2019-11-06 16:44:34.283151+01:00",
+  "dateModified": "",
+  "author": {
+    "@type": "Person",
+    "name": "LLMing",
+    "url": "https://llming.github.io/author/llming.html"
+  },
+  "image": "https://llming.github.io/theme/images/post-bg.jpg",
+  "url": "https://llming.github.io/k-jin-lin-suan-fa-k-nearestneighbor-knn.html",
+  "description": "K近邻算法概述 K-近邻算法采用测量不同特征值之间的距离方法进行分类 优点： 精度高、对异常者不敏感、无数据输入假定。 缺点： 计算复杂度高、空间复杂度高。 适用数据范围： 数值型和标称型。 工作原理..."
+}
+</script>
+</head>
+<!-- TODO : Body class -->
+<body class="home-template">
+
+<nav id="menu">
+  <a class="close-button">Close</a>
+  <div class="nav-wrapper">
+    <p class="nav-label">Menu</p>
+    <ul>
+          <li><a href="/" role="presentation">Home</a></li>
+          <li><a href="/pages/about-me.html" role="presentation">About</a></li>
+
+                  <li role="presentation"><a href="https://llming.github.io/category/diary.html">Diary</a></li>
+                  <li role="presentation"><a href="https://llming.github.io/category/digital_biology.html">Digital_Biology</a></li>
+                  <li role="presentation"><a href="https://llming.github.io/category/java.html">Java</a></li>
+                  <li role="presentation"><a href="https://llming.github.io/category/learning-note.html">learning note</a></li>
+                  <li role="presentation"><a href="https://llming.github.io/category/machinelearning.html">machineLearning</a></li>
+                  <li role="presentation"><a href="https://llming.github.io/category/test.html">Test</a></li>
+                  <li role="presentation"><a href="https://llming.github.io/category/web-accessibility.html">Web-Accessibility</a></li>
+
+    </ul>
+  </div>
+</nav>
+    <!-- Progressbar -->
+    <div class="progress-container">
+        <span class="progress-bar"></span>
+    </div>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header id="post-header" class="has-cover">
+      <div class="inner">
+        <nav id="navigation">
+            <span id="home-button" class="nav-button">
+                <a class="home-button" href="https://llming.github.io/" title="Home"><i class="ic ic-arrow-left"></i> Home</a>
+            </span>
+          <span id="menu-button" class="nav-button">
+            <a class="menu-button"><i class="ic ic-menu"></i> Menu</a>
+          </span>
+        </nav>
+        <h1 class="post-title">K-近邻算法（K-NearestNeighbor， KNN）</h1>
+        <!-- TODO : Proper class for headline -->
+        <span class="post-meta">
+                <a href="https://llming.github.io/author/llming.html">Llming</a>
+            | <time datetime="2019 Nov 06 Wed">2019 Nov 06 Wed</time>
+        </span>
+        <!-- TODO : Modified check -->
+            <div class="post-cover cover" style="background-image: url('https://llming.github.io/theme/images/post-bg.jpg')">
+      </div>
+    </header>
+
+  <section id="wrapper">
+    <a class="hidden-close"></a>
+
+    <!-- Post content -->
+    <main class="content" role="main">
+        <article class="post">
+        <div class="inner">
+            <section class="post-content">
+                <h2>K近邻算法概述</h2>
+<p>K-近邻算法采用测量不同特征值之间的距离方法进行分类
+<strong>优点：</strong> 精度高、对异常者不敏感、无数据输入假定。
+<strong>缺点：</strong> 计算复杂度高、空间复杂度高。
+<strong>适用数据范围：</strong> 数值型和标称型。</p>
+<h2>工作原理</h2>
+<p>存在一个样本数据集合(训练样本集),样本集中每个数据都存在标签,即了解样本集中每条数据与所属分类的对应关系.输入没有标签的新数据后,将新数据的每个特征与样本集中数据对应的特征进行比较,然后使用算法提取样本集中特征最相近数据(最近邻)的分类标签.一般选择样本数据集中<strong>前K个</strong>最相似的数据,因此叫做k-近邻算法.k<em>通常是不大于20的整数</em>,最后选择k个最相似数据中出现次数最多的分类,做为新数据的分类.</p>
+<h2>一般流程</h2>
+<ol>
+<li>收集数据: 可以使用任何方法.</li>
+<li>准备数据: 距离计算所需的数值, 最好是结构化的数据格式.</li>
+<li>分析数据: 可以使用任何方法.</li>
+<li>训练算法:k-近邻算法中无此步骤.</li>
+<li>测试算法: 计算错误率.</li>
+<li>使用算法: 首先需要输入样本数据和结构化的输出结果,然后运行k-近邻算法判定输入数据分别属于哪个分类,最后对计算出的分类执行后续处理.</li>
+</ol>
+<h2>欧氏距离公式</h2>
+<p>两个向量点A和B之间的距离:
+$$d = \sqrt{(A_0-B_0)^2+(A_1-B_1)^2}$$
+例如,点A(1,2)和点B(3,4)之间的距离公式为:
+$$\sqrt{(3-1)^2+(4-2)^2}$$
+若存在点A(0,1,2,3)和点B(4,5,6,7),则它们之间的距离为:
+$$\sqrt{(4-0)^2+(5-1)^2+(6-2)^2+(7-3)^2}$$</p>
+<h2>k-近邻算法例子</h2>
+<p>设定样本集group和属性值labels,通过欧氏距离公式计算输入样本如[0,0]归属与哪个样本集--B.</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">operator</span>
+
+<span class="k">def</span> <span class="nf">createDataSet</span><span class="p">():</span>
+    <span class="n">group</span> <span class="o">=</span> <span class="n">array</span><span class="p">([[</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">1.1</span><span class="p">],[</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.1</span><span class="p">]])</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;B&#39;</span><span class="p">,</span><span class="s1">&#39;B&#39;</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">group</span><span class="p">,</span> <span class="n">labels</span>
+
+
+<span class="k">def</span> <span class="nf">classify0</span><span class="p">(</span><span class="n">inX</span><span class="p">,</span> <span class="n">dataSet</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+    <span class="c1">#dataSetSize的结果为dataSet的长度</span>
+    <span class="n">dataSetSize</span> <span class="o">=</span> <span class="n">dataSet</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="c1"># diffmat为两数组相减</span>
+    <span class="n">diffMat</span> <span class="o">=</span> <span class="n">tile</span><span class="p">(</span><span class="n">inX</span><span class="p">,</span> <span class="p">(</span><span class="n">dataSetSize</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="o">-</span> <span class="n">dataSet</span>
+    <span class="c1"># 计算结果的平方</span>
+    <span class="n">sqDiffMat</span> <span class="o">=</span> <span class="n">diffMat</span> <span class="o">**</span> <span class="mi">2</span>
+    <span class="c1"># 将结果平方的每一项相加</span>
+    <span class="n">sqDistances</span> <span class="o">=</span> <span class="n">sqDiffMat</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="c1"># 开方</span>
+    <span class="n">distances</span> <span class="o">=</span> <span class="n">sqDistances</span> <span class="o">**</span> <span class="mf">0.5</span>
+    <span class="c1"># 将距离按从小到大排序</span>
+    <span class="n">sortedDistIndicies</span> <span class="o">=</span> <span class="n">distances</span><span class="o">.</span><span class="n">argsort</span><span class="p">()</span>
+    <span class="n">classCount</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="c1"># 取前k个距离最小的值</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+        <span class="c1"># 获得数组元素的位置对应的labels中的值</span>
+        <span class="n">voteIlabel</span> <span class="o">=</span> <span class="n">labels</span><span class="p">[</span><span class="n">sortedDistIndicies</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+        <span class="c1"># 向classCount中更新出现次数</span>
+        <span class="n">classCount</span><span class="p">[</span><span class="n">voteIlabel</span><span class="p">]</span> <span class="o">=</span> <span class="n">classCount</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">voteIlabel</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="c1"># 将classCount中的键按值从大到小排序</span>
+    <span class="n">sortedClassCount</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">classCount</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">itemgetter</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sortedClassCount</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+            </section>
+
+            <section class="post-info">
+                <div class="post-share">
+                    <a class="twitter" href="https://twitter.com/share?text=K-近邻算法（K-NearestNeighbor， KNN）&amp;url=https://llming.github.io/k-jin-lin-suan-fa-k-nearestneighbor-knn.html" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <i class="ic ic-twitter"></i><span class="hidden">Twitter</span>
+                    </a>
+                    <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://llming.github.io/k-jin-lin-suan-fa-k-nearestneighbor-knn.html" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <i class="ic ic-facebook"></i><span class="hidden">Facebook</span>
+                    </a>
+                    <a class="googleplus" href="https://plus.google.com/share?url=https://llming.github.io/k-jin-lin-suan-fa-k-nearestneighbor-knn.html" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <i class="ic ic-googleplus"></i><span class="hidden">Google+</span>
+                    </a>
+                    <div class="clear"></div>
+                </div>
+
+                <aside class="post-tags">
+<a href="https://llming.github.io/tag/python.html">Python</a><a href="https://llming.github.io/tag/machinelearning.html">MachineLearning</a>                </aside>
+
+                <div class="clear"></div>
+
+
+                </section>
+
+
+                <aside class="post-nav">
+                    <div class="clear"></div>
+                </aside>
+
+            </div>
+        </article>
+    </main>
+      <!-- TODO : Body class -->
+    <div id="body-class" style="display: none;" class=""></div>
+
+    <footer id="footer">
+      <div class="inner">
+        <section class="credits">
+
+
+          <span class="credits-theme">Theme <a href="https://github.com/arulrajnet/attila" rel="nofollow">Attila</a></span>
+          <span class="credits-software">Published with <a href="https://github.com/getpelican/pelican" rel="nofollow">Pelican</a></span>
+        </section>
+      </div>
+    </footer>
+  </section>
+
+  <script type="text/javascript" src="https://llming.github.io/theme/js/script.js"></script>
+
+</body>
+</html>
