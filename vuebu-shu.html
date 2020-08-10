@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
 
-  <title>Agile Software Development</title>
+  <title>vue部署</title>
 
 
   <meta name="HandheldFriendly" content="True" />
@@ -36,33 +36,29 @@
   <![endif]-->
 
 
-    <link href="https://llming.github.io/agile-software-development.html" rel="canonical" />
+    <link href="https://llming.github.io/vuebu-shu.html" rel="canonical" />
 
-        <meta name="description" content="Agile 敏捷开发宣言： 个体和互动 高于流程和工具 自我组织和动机非常重要,例如双人程序开发.创建一个良好的沟通和协作的开发团队,由于一个孤立运行的专家团队.沟通是一个基本概念 工作的软件 高于 详尽的文档...">
+        <meta name="description" content="vue项目部署到tomcat服务器 在router文件夹下index.js文件添加如下： const createRouter = () => new Router({ mode: 'history', base: 'sp',//项目名称 ... })...">
 
         <meta name="author" content="LLMing">
 
-        <meta name="tags" content="Agile">
-        <meta name="tags" content="Iterative">
-        <meta name="tags" content="Regression">
+        <meta name="tags" content="vue">
 
 
 
 
 <!-- Open Graph -->
 <meta property="og:site_name" content="LLMing Blog"/>
-<meta property="og:title" content="Agile Software Development"/>
-<meta property="og:description" content="Agile 敏捷开发宣言： 个体和互动 高于流程和工具 自我组织和动机非常重要,例如双人程序开发.创建一个良好的沟通和协作的开发团队,由于一个孤立运行的专家团队.沟通是一个基本概念 工作的软件 高于 详尽的文档..."/>
+<meta property="og:title" content="vue部署"/>
+<meta property="og:description" content="vue项目部署到tomcat服务器 在router文件夹下index.js文件添加如下： const createRouter = () => new Router({ mode: 'history', base: 'sp',//项目名称 ... })..."/>
 <meta property="og:locale" content="en_US"/>
-<meta property="og:url" content="https://llming.github.io/agile-software-development.html"/>
+<meta property="og:url" content="https://llming.github.io/vuebu-shu.html"/>
 <meta property="og:type" content="article"/>
-<meta property="article:published_time" content="2019-02-03 02:17:36+01:00"/>
+<meta property="article:published_time" content="2020-08-10 14:53:30.034891+02:00"/>
 <meta property="article:modified_time" content=""/>
 <meta property="article:author" content="https://llming.github.io/author/llming.html">
-<meta property="article:section" content="Digital_Biology"/>
-<meta property="article:tag" content="Agile"/>
-<meta property="article:tag" content="Iterative"/>
-<meta property="article:tag" content="Regression"/>
+<meta property="article:section" content="vue"/>
+<meta property="article:tag" content="vue"/>
 <meta property="og:image" content="https://llming.github.io/theme/images/post-bg.jpg">
 
 <!-- Twitter Card -->
@@ -71,9 +67,9 @@
 {
   "@context": "http://schema.org",
   "@type": "Article",
-  "name": "Agile Software Development",
-  "headline": "Agile Software Development",
-  "datePublished": "2019-02-03 02:17:36+01:00",
+  "name": "vue部署",
+  "headline": "vue部署",
+  "datePublished": "2020-08-10 14:53:30.034891+02:00",
   "dateModified": "",
   "author": {
     "@type": "Person",
@@ -81,8 +77,8 @@
     "url": "https://llming.github.io/author/llming.html"
   },
   "image": "https://llming.github.io/theme/images/post-bg.jpg",
-  "url": "https://llming.github.io/agile-software-development.html",
-  "description": "Agile 敏捷开发宣言： 个体和互动 高于流程和工具 自我组织和动机非常重要,例如双人程序开发.创建一个良好的沟通和协作的开发团队,由于一个孤立运行的专家团队.沟通是一个基本概念 工作的软件 高于 详尽的文档..."
+  "url": "https://llming.github.io/vuebu-shu.html",
+  "description": "vue项目部署到tomcat服务器 在router文件夹下index.js文件添加如下： const createRouter = () => new Router({ mode: 'history', base: 'sp',//项目名称 ... })..."
 }
 </script>
 </head>
@@ -126,11 +122,11 @@
             <a class="menu-button"><i class="ic ic-menu"></i> Menu</a>
           </span>
         </nav>
-        <h1 class="post-title">Agile Software Development</h1>
+        <h1 class="post-title">vue部署</h1>
         <!-- TODO : Proper class for headline -->
         <span class="post-meta">
                 <a href="https://llming.github.io/author/llming.html">Llming</a>
-            | <time datetime="2019 Feb 03 Sun">2019 Feb 03 Sun</time>
+            | <time datetime="2020 Aug 10 Mon">2020 Aug 10 Mon</time>
         </span>
         <!-- TODO : Modified check -->
             <div class="post-cover cover" style="background-image: url('https://llming.github.io/theme/images/post-bg.jpg')">
@@ -145,48 +141,35 @@
         <article class="post">
         <div class="inner">
             <section class="post-content">
-                <h2>Agile</h2>
-<h3>敏捷开发宣言：</h3>
-<ol>
-<li>个体和互动 高于流程和工具
-    自我组织和动机非常重要,例如双人程序开发.创建一个良好的沟通和协作的开发团队,由于一个孤立运行的专家团队.沟通是一个基本概念</li>
-<li>工作的软件 高于 详尽的文档
-    工作软件比在会议中向客户呈现文件更有用并且更受欢迎.应当保持外部文件的轻量化,而不是沉重的文件.最好的做法是和代码一起评论</li>
-<li>客户合作 高于 合同谈判
-    在软件开发周期的初始阶段,需求无法完全收集,所以最好直接涉及到付费客户,最终用户或者代理.通过反馈逐步阐述和调整详细的需求.</li>
-<li>响应变化 高于 遵循计划
-    敏捷软件开发方法的重点是快速响应变化和持续发展.</li>
-</ol>
-<h3>敏捷开发方法</h3>
-<p><strong>迭代,渐进和进化</strong>:
-大多数敏捷开发方法会将产品开发工作细分微小化,因此大大的减少了前期规划和设计的数量.迭代或冲刺都是短时间的框架，通常持续1到4周，每个迭代周期都包含了规划，分析，设计，程序编码，单元测试和验收测试。在迭代结束时，将工作产品向利益相关者展示。
-<strong>面对面沟通</strong>:
-设置Scrum Master回应在开发迭代过程中的问题.在每个迭代周期,Product Owner将审查进度并重新评估优先级,以优化投资回报(ROI)并确保与客户需求和公司目标保持一致.
-<strong>非常短的反馈和适应周期</strong>:
-敏捷软件开发中的一个共同特点就是每日站立会议(daily communication).在这一会议中,团队成员报告前一天的迭代目标,打算做的目标和遇到的任何障碍或阻碍.
-<strong>质量焦点</strong>:
-经常使用诸如持续集成,自动化单元测试,配对程序开发,测试驱动开发,设计模式,领域驱动设计,代码重构来提高产品开发敏捷性.</p>
-<h3>敏捷开发与其他开发方法的比较</h3>
-<p><strong>Agile vs Waterfall</strong>:
-敏捷软件开发法和瀑布开发之间的区别就是质量和测试方法.在瀑布模型中,构建阶段之后总是有单独的测试阶段;但是,在敏捷开发测试中,通常会先于代码书写测试.</p>
+                <p>vue项目部署到tomcat服务器</p>
+<p>在router文件夹下index.js文件添加如下：</p>
+<div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">createRouter</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="k">new</span> <span class="nx">Router</span><span class="p">({</span>
+  <span class="nx">mode</span><span class="o">:</span> <span class="s1">&#39;history&#39;</span><span class="p">,</span>
+  <span class="nx">base</span><span class="o">:</span> <span class="s1">&#39;sp&#39;</span><span class="p">,</span><span class="c1">//项目名称</span>
+  <span class="p">...</span>
+<span class="p">})</span>
+</pre></div>
+
+
+<p>在vue.config.js中修改publicPath为‘/项目名称’</p>
             </section>
 
             <section class="post-info">
                 <div class="post-share">
-                    <a class="twitter" href="https://twitter.com/share?text=Agile Software Development&amp;url=https://llming.github.io/agile-software-development.html" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <a class="twitter" href="https://twitter.com/share?text=vue部署&amp;url=https://llming.github.io/vuebu-shu.html" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
                     <i class="ic ic-twitter"></i><span class="hidden">Twitter</span>
                     </a>
-                    <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://llming.github.io/agile-software-development.html" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://llming.github.io/vuebu-shu.html" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
                     <i class="ic ic-facebook"></i><span class="hidden">Facebook</span>
                     </a>
-                    <a class="googleplus" href="https://plus.google.com/share?url=https://llming.github.io/agile-software-development.html" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <a class="googleplus" href="https://plus.google.com/share?url=https://llming.github.io/vuebu-shu.html" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
                     <i class="ic ic-googleplus"></i><span class="hidden">Google+</span>
                     </a>
                     <div class="clear"></div>
                 </div>
 
                 <aside class="post-tags">
-<a href="https://llming.github.io/tag/agile.html">Agile</a><a href="https://llming.github.io/tag/iterative.html">Iterative</a><a href="https://llming.github.io/tag/regression.html">Regression</a>                </aside>
+<a href="https://llming.github.io/tag/vue.html">vue</a>                </aside>
 
                 <div class="clear"></div>
 
