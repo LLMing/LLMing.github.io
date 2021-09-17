@@ -55,7 +55,7 @@
 <meta property="og:url" content="https://llming.github.io/vuebu-shu.html"/>
 <meta property="og:type" content="article"/>
 <meta property="article:published_time" content="2020-08-10 15:05:00.277269+02:00"/>
-<meta property="article:modified_time" content=""/>
+<meta property="article:modified_time" content="2020-08-10 15:05:00.277269+02:00"/>
 <meta property="article:author" content="https://llming.github.io/author/llming.html">
 <meta property="article:section" content="vue"/>
 <meta property="article:tag" content="vue"/>
@@ -70,7 +70,7 @@
   "name": "vue部署",
   "headline": "vue部署",
   "datePublished": "2020-08-10 15:05:00.277269+02:00",
-  "dateModified": "",
+  "dateModified": "2020-08-10 15:05:00.277269+02:00",
   "author": {
     "@type": "Person",
     "name": "LLMing",
@@ -126,9 +126,10 @@
         <!-- TODO : Proper class for headline -->
         <span class="post-meta">
                 <a href="https://llming.github.io/author/llming.html">Llming</a>
-            | <time datetime="2020 Aug 10 Mon">2020 Aug 10 Mon</time>
+            | <time datetime="2020  8 10 一">2020  8 10 一</time>
         </span>
         <!-- TODO : Modified check -->
+            <span class="post-meta"> | Updated on 2020  8 10 一</span>
             <div class="post-cover cover" style="background-image: url('https://llming.github.io/theme/images/post-bg.jpg')">
       </div>
     </header>
@@ -143,23 +144,21 @@
             <section class="post-content">
                 <p>vue项目部署到tomcat服务器</p>
 <p>在router文件夹下index.js文件添加如下：</p>
-<div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">createRouter</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="k">new</span> <span class="nx">Router</span><span class="p">({</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">createRouter</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="ow">new</span> <span class="nx">Router</span><span class="p">({</span>
   <span class="nx">mode</span><span class="o">:</span> <span class="s1">&#39;history&#39;</span><span class="p">,</span>
   <span class="nx">base</span><span class="o">:</span> <span class="s1">&#39;sp&#39;</span><span class="p">,</span><span class="c1">//项目名称</span>
   <span class="p">...</span>
 <span class="p">})</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>在vue.config.js中修改publicPath为‘/项目名称’</p>
 <p>命令行输入</p>
-<div class="highlight"><pre><span></span>npm run build:prod
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>npm run build:prod
+</code></pre></div>
 
 <p>将生成的dist文件夹中的文件放至tomcat路径下=》webapps文件夹下=》项目名文件夹下
 在项目名文件夹下再新建一个文件夹WEB-INF，在WEB-INF文件夹下新建文件web.xml</p>
-<div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
 <span class="nt">&lt;web-app</span> <span class="na">xmlns=</span><span class="s">&quot;http://xmlns.jcp.org/xml/ns/javaee&quot;</span>
   <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
   <span class="na">xsi:scheamLocation=</span><span class="s">&quot;http://xmlns.jcp.org/xml/ns/javaee</span>
@@ -172,8 +171,7 @@
     <span class="nt">&lt;location&gt;</span>/index.html<span class="nt">&lt;/location&gt;</span>
   <span class="nt">&lt;/error-page&gt;</span>
 <span class="nt">&lt;/web-app&gt;</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>启动tomcat！</p>
             </section>
@@ -228,5 +226,7 @@
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({startOnLoad:true});</script>
 </body>
 </html>
